@@ -23,9 +23,9 @@ void Game::gameLoop() {
 	Input input;
 	SDL_Event event;
 	
-	this->_player.init(graphics, 500, 300);
+	this->_player.init(graphics, 100, 80);
 	//this->_player.playAnimation("RunRight");
-	this->_level = Level("map 1", Vector2(100, 100), graphics);
+	this->_level = Level("Map 1", Vector2(100, 100), graphics);
 
 	int lastUpdateTime = SDL_GetTicks();
 
@@ -54,12 +54,12 @@ void Game::gameLoop() {
 		else if (input.isKeyHeld(SDL_SCANCODE_RIGHT)) {
 			this->_player.moveRight();
 		}
-		else if (input.isKeyHeld(SDL_SCANCODE_UP)) {
-			this->_player.moveUp();
-		}
-		else if (input.isKeyHeld(SDL_SCANCODE_DOWN)) {
-			this->_player.moveDown();
-		}
+		//else if (input.isKeyHeld(SDL_SCANCODE_UP)) {
+		//	this->_player.moveUp();
+		//}
+		//else if (input.isKeyHeld(SDL_SCANCODE_DOWN)) {
+		//	this->_player.moveDown();
+		//}
 		else if (!input.isKeyHeld(SDL_SCANCODE_LEFT) && !input.isKeyHeld(SDL_SCANCODE_RIGHT) && !input.isKeyHeld(SDL_SCANCODE_UP) && !input.isKeyHeld(SDL_SCANCODE_DOWN)) {
 			this->_player.stop();
 		}

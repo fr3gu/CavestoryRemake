@@ -17,6 +17,7 @@ Graphics::Graphics()
 Graphics::~Graphics()
 {
 	SDL_DestroyWindow(this->_window);
+	SDL_DestroyRenderer(this->_renderer);
 }
 
 SDL_Surface * Graphics::loadImage(const std::string & filePath, RgbHolder & rgb)
@@ -27,7 +28,8 @@ SDL_Surface * Graphics::loadImage(const std::string & filePath, RgbHolder & rgb)
 		if(rgb.isSet) {
 			SDL_SetColorKey(surfejs, 1, SDL_MapRGB(surfejs->format, rgb.r, rgb.g, rgb.b));
 		}		
-		std::string err = IMG_GetError();
+		SDL_Log("Graphics::loagImage IMG_GetError: %s", IMG_GetError());
+		SDL_Log("Graphics::loagImage SDL_GetError: %s", SDL_GetError());
 		this->_spriteSheets[filePath] = surfejs;
 	}
 	return this->_spriteSheets[filePath];

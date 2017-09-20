@@ -7,6 +7,7 @@
 class Player {
 
 public:
+	Player();
 	AnimatedSprite getSprite();
 	void init(Graphics &graphics);
 	void init(Graphics &graphics, float posX, float posY);
@@ -19,10 +20,13 @@ public:
 	void moveDown();
 	void stop();
 	void animationDone(string currentAnimation);
+	const float getX() const;
+	const float getY() const;
 private:
 	AnimatedSprite _sprite;
 	float _dx, _dy;
 	Direction _facing;
+	bool _isGrounded;
 };
 #endif // !1
 
