@@ -2,7 +2,8 @@
 #define GAME_H
 
 #include "graphics.h"
-#include "sprite.h"
+#include "player.h"
+#include "level.h"
 
 class Game {
 public:
@@ -12,7 +13,8 @@ private:
 	void gameLoop();
 	void draw(Graphics &graphics);
 	void update(float elapsedTime);
-	Sprite _player;
+	Player _player;
+	Level _level;
 };
 
 #endif // !GAME_H

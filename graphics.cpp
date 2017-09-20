@@ -11,9 +11,6 @@
 Graphics::Graphics()
 {
 	SDL_CreateWindowAndRenderer(globals::SCREEN_WIDTH, globals::SCREEN_HEIGTH, 0, &this->_window, &this->_renderer);
-	/*SDL_SetRenderDrawColor(this->_renderer, 0, 0, 0, 255);
-	this->clear();
-	this->flip();*/
 	SDL_SetWindowTitle(this->_window, "Cavestory++");
 }
 
@@ -22,11 +19,14 @@ Graphics::~Graphics()
 	SDL_DestroyWindow(this->_window);
 }
 
-SDL_Surface * Graphics::loadImage(const std::string & filePath) 
+SDL_Surface * Graphics::loadImage(const std::string & filePath, RgbHolder & rgb)
 {
 	const char* thePath = filePath.c_str();
 	if (this->_spriteSheets.count(filePath) == 0) {
 		SDL_Surface* surfejs = IMG_Load(thePath);
+		if(rgb.isSet) {
+			SDL_SetColorKey(surfejs, 1, SDL_MapRGB(surfejs->format, rgb.r, rgb.g, rgb.b));
+		}		
 		std::string err = IMG_GetError();
 		this->_spriteSheets[filePath] = surfejs;
 	}

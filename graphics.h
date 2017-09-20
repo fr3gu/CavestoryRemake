@@ -9,13 +9,14 @@ struct SDL_Renderer;
 struct SDL_Surface;
 struct SDL_Texture;
 struct SDL_Rect;
+struct RgbHolder;
 
 class Graphics {
 public:
 	Graphics();
 	~Graphics();
 
-	SDL_Surface* loadImage(const std::string &filePath);
+	SDL_Surface* loadImage(const std::string &filePath, RgbHolder &rgb);
 	void blitSurface(SDL_Texture* texture, SDL_Rect* sourceRectangle, SDL_Rect* destinationRectangle);
 	void flip();
 	void clear();
